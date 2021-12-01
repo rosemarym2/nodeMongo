@@ -43,3 +43,12 @@ exports.findMovie = async (collection, dataObj)=> {
         console.log(error)
     }
 };
+
+exports.findMovie = async (collection, dataObj)=> {
+    try{
+        const filteredDocs = await collection.find({rating: {$gt: "4/10"}}).toArray();
+        console.log('Found documents filtered by rating above 4/10 =>', filteredDocs);
+    } catch (error){
+        console.log(error)
+    }
+};
