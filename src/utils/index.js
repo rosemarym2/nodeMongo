@@ -34,3 +34,12 @@ exports.updateMovie = async (collection, dataObj)=> {
         console.log(error)
     }
 };
+
+exports.findMovie = async (collection, dataObj)=> {
+    try{
+        const findMovie = await collection.find({title: dataObj.title}).toArray();
+        console.log("Found documents =>", findMovie);
+    } catch (error){
+        console.log(error)
+    }
+};
