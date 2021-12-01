@@ -19,16 +19,16 @@ exports.listMovies = async (collection) =>{
 
 exports.deleteMovie = async (collection, deleteObj)=> {
     try{
-        const deleteMovie = await collection.deleteMany({title: "Spiderman" })
+        const deleteMovie = await collection.deleteMany(deleteObj)
         console.log("Document Deleted", deleteMovie);
     } catch (error){
         console.log(error)
     }
 };
 
-exports.updateMovie = async (collection, updateObj)=> {
+exports.updateMovie = async (collection, dataObj)=> {
     try{
-        const updateMovie = await collection.updateOne({title: "Spiderman" }, {$set: { actor: "Emma Stone", rating: "8/10" } })
+        const updateMovie = await collection.updateOne({title: dataObj.title}, {$set: dataObj})
         console.log("Document Updated Successfully", updateMovie);
     } catch (error){
         console.log(error)
