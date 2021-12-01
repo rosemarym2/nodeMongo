@@ -1,7 +1,8 @@
 
 exports.addMovie = async (collection, dataObj) => {
     try{
-        await collection.insertOne(dataObj)
+        const addMovie =await collection.insertOne(dataObj)
+        console.log("Movie Successfully Added", addMovie);
     } catch (error){
         console.log(error)
     }
