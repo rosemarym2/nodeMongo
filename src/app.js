@@ -1,5 +1,5 @@
 const connection = require("./db/connection");
-const { addMovie, listMovies, updateMovie, deleteMovie, findMovie } = require("./utils");
+const { addMovie, listMovies, updateMovie, deleteMovie, findMovie, filterMovie } = require("./utils");
 const { ObjectId } = require ("bson");
 
 const command = process.argv[2];
@@ -35,6 +35,13 @@ const app = async () =>{
             rating: process.argv[5]
         };
         await connection(findMovie, foundMovies);
+    } else if (command === "filter")  {
+            const filteredMovies = {
+            title: process.argv[3],
+            actor: process.argv[4],
+            rating: process.argv[5]
+        };
+        await connection(filterMovie, filteredMovies);
     } else {
         console.log("Incorrect Input")
     }
