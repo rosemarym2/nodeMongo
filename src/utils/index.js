@@ -52,3 +52,12 @@ exports.filterMovie = async (collection)=> {
         console.log(error)
     }
 };
+
+exports.indexMovie = async (collection, dataObj)=> {
+    try{
+        const indexName = await collection.createIndex({"title": 1});
+        console.log('index name =', indexName);
+    } catch (error){
+        console.log(error)
+    }
+};
